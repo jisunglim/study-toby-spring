@@ -2,16 +2,21 @@ package springbook.user;
 
 import java.sql.SQLException;
 
-import springbook.user.dao.NUserDao;
 import springbook.user.dao.AbstractUserDao;
+import springbook.user.dao.ExtendsDUserDao;
 import springbook.user.domain.User;
 
 /**
- * @author Jisung Lim <iejisung@gmail.com>
+ * Simple, ugly test for Abstract User DAO.
+ *
+ * @author  Jisung Lim ( iejisung@gmail.com )
+ * @version 1.3 (deprecated)
+ * @since   1.1
  */
+@Deprecated
 public class UserTest {
   public static void main(String[] args) throws ClassNotFoundException, SQLException {
-    AbstractUserDao userDao = new NUserDao();
+    AbstractUserDao userDao = new ExtendsDUserDao();
 
     User user = new User();
     user.setId("Sidney");

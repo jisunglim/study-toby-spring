@@ -5,9 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * @author Jisung Lim <iejisung@gmail.com>
+ * N User Dao extends Abstract User Dao.
+ *
+ * @author  Jisung Lim ( iejisung@gmail.com )
+ * @version 1.3 (deprecated)
+ * @since   1.1
  */
-public class NUserDao extends AbstractUserDao {
+@Deprecated
+public class ExtendsNUserDao extends AbstractUserDao {
 
   @Override
   protected Connection getConnection() throws ClassNotFoundException, SQLException {

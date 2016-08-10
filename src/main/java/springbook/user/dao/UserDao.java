@@ -8,7 +8,11 @@ import java.sql.SQLException;
 import springbook.user.domain.User;
 
 /**
- * @author Jisung Lim <iejisung@gmail.com>
+ * Here your documentation.
+ *
+ * @author  Jisung Lim ( iejisung@gmail.com )
+ * @version 1.3 Extension of DAO
+ * @since   1.1 Distracting DAO
  */
 public class UserDao {
 
@@ -17,7 +21,6 @@ public class UserDao {
   public UserDao(ConnectionMaker connectionMaker) {
     this.connectionMaker = connectionMaker;
   }
-
 
   public void add(User user) throws ClassNotFoundException, SQLException {
 

@@ -5,7 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * @author Jisung Lim <iejisung@gmail.com>
+ * Here your documentation.
+ *
+ * @author  Jisung Lim ( iejisung@gmail.com )
+ * @version 1.3 Extension of DAO
+ * @since   1.2 Separation of Concerns
  */
 public class SimpleConnectionMaker implements ConnectionMaker {
 

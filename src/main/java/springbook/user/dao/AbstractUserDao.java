@@ -8,8 +8,13 @@ import java.sql.SQLException;
 import springbook.user.domain.User;
 
 /**
- * @author Jisung Lim <iejisung@gmail.com>
+ * Abstract User Dao.
+ *
+ * @author  Jisung Lim ( iejisung@gmail.com )
+ * @version 1.3 (deprecated)
+ * @since   1.1
  */
+@Deprecated
 public abstract class AbstractUserDao {
 
   protected abstract Connection getConnection() throws ClassNotFoundException, SQLException;
