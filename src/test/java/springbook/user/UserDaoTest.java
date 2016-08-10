@@ -1,5 +1,8 @@
 package springbook.user;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.sql.SQLException;
 
 import springbook.user.dao.DaoFactory;
@@ -10,18 +13,21 @@ import springbook.user.domain.User;
  * User Dao Test.
  *
  * @author  Jisung Lim ( iejisung@gmail.com )
- * @version 1.4 Inversion of Control
+ * @version 1.5 IoC for Spring framework
  * @since   1.3 Extension of DAO
  */
 public class UserDaoTest {
   public static void main(String[] args) throws ClassNotFoundException, SQLException{
 
-    UserDao userDao = new DaoFactory().userDao();
+    ApplicationContext applicationContext =
+        new AnnotationConfigApplicationContext(DaoFactory.class);
+
+    UserDao userDao = applicationContext.getBean("userDao", UserDao.class);
 
     User user = new User();
-    user.setId("Kim");
-    user.setName("Lin Kim");
-    user.setPassword("linlim");
+    user.setId("Spring");
+    user.setName("Spring Jim");
+    user.setPassword("sjim");
 
     userDao.add(user);
 

@@ -22,7 +22,7 @@ public class DConnectionMaker implements ConnectionMaker {
       Class.forName("com.mysql.jdbc.Driver");
 
       // 2. Get connection
-      String url = "jdbc:mysql://localhost:3306/sprigbook";
+      String url = "jdbc:mysql://localhost:3306/springbook";
       String usr = "springbook";
       String pwd = "springbook";
 

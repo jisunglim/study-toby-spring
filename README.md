@@ -5,49 +5,120 @@
 ### _BY_ [JisungLim](https://github.com/jisunglim)
 ### _SINCE_ August 9, 2016
 
-## Chapter 1.4 Inversion of Control
+## Chapter 1.5 IoC for Spring Framework
+
+##### 0. Spring Framework
+* To use spring framework, do import libraries
+```
+com.springsource.net.sf.cglib-2.2.0.jar
+com.springsource.org.apache.commons.logging-1.1.1.jar
+com.springframework.asm-3.0.7.RELEASE.jar
+com.springframework.beans-3.0.7.RELEASE.jar
+com.springframework.context-3.0.7.RELEASE.jar
+com.springframework.core-3.0.7.RELEASE.jar
+com.springframework.expression-3.0.7.RELEASE.jar
+```
+* If your project uses Maven, add dependencies
+```xml
+<project>
+  
+  <!-- Ommited... -->
+
+  <properties>
+    <org.springframework-version>3.0.7.RELEASE</org.springframework-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencies>
+
+    <!--ch 1.5 cglib-->
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
+      <version>2.2</version>
+    </dependency>
 
 
-##### 1. Separate of responsibility to decide relation
-* afraid that UserDaoTest undertake another responsibility
-* create DaoFactory and Separation the relation-setting responsibility
+    <!-- ch 1.5 apache commons logging -->
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+
+    <!-- ch 1.5 spring asm -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-asm</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring beans -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring expression language -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-expression</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+       
+    <!-- Ommited... -->
+
+  </dependencies>
+
+  <!-- Ommited... -->
+
+</project>
+
+```
+
+
+##### 1. Spring Framework and Application Context
+* Let's use spring framework for our project.
+* We will use DaoFactory as a configuration file for application context
 ```java
+@Configuration
 public class DaoFactory {
+
+  @Bean
+  public ConnectionMaker connectionMaker() {
+    return new DConnectionMaker();
+  }
+
+  @Bean
   public UserDao userDao() {
-    ConnectionMaker connectionMaker = new DConnectionMaker();
-    UserDao userDao = new UserDao(connectionMaker);
-    return userDao;
+    return new UserDao(connectionMaker());
   }
 }
 
 public class UserDaoTest {
   public static void main(String[] args) throws ClassNotFoundException, SQLException{
-    UserDao userDao = new DaoFactory().userDao();
-    // ...
-  }
-}
-```
 
-##### 2. Eliminate redundant code
-* Code line to make connection is redundant in DaoFactory.
-* Separate connectionMaker as a private method
-```java
-public class DaoFactory {
+    ApplicationContext applicationContext =
+        new AnnotationConfigApplicationContext(DaoFactory.class);
 
-  public UserDao userDao() {
-    return new UserDao(connectionMaker());
-  }
-  
-  public AccountDao accountDao() {
-    return new UserDao(connectionMaker());
-  }
-  
-  public MessageDao messageDao() {
-    return new UserDao(connectionMaker());
-  }
-  
-  private ConnectionMaker connectionMaker() {
-    return new DConnectionMaker();
+    UserDao userDao = applicationContext.getBean("userDao", UserDao.class);
+    //...
   }
 }
 ```

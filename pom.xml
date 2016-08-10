@@ -11,7 +11,63 @@
 
   <url>http://maven.apache.org</url>
 
+  <properties>
+    <org.springframework-version>3.0.7.RELEASE</org.springframework-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
   <dependencies>
+
+    <!--ch 1.5 cglib-->
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
+      <version>2.2</version>
+    </dependency>
+
+
+    <!-- ch 1.5 apache commons logging -->
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+
+    <!-- ch 1.5 spring asm -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-asm</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring beans -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+    <!-- ch 1.5 spring expression language -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-expression</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
 
     <!-- MySQL JDBC Driver -->
     <dependency>
