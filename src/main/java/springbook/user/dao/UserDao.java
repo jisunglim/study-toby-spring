@@ -11,14 +11,18 @@ import springbook.user.domain.User;
  * Here your documentation.
  *
  * @author  Jisung Lim ( iejisung@gmail.com )
- * @version 1.3 Extension of DAO
+ * @version 1.7 Dependency Injection
  * @since   1.1 Distracting DAO
  */
 public class UserDao {
 
   private ConnectionMaker connectionMaker;
 
-  public UserDao(ConnectionMaker connectionMaker) {
+//  public UserDao(ConnectionMaker connectionMaker) {
+//    this.connectionMaker = connectionMaker;
+//  }
+
+  public void setConnectionMaker(ConnectionMaker connectionMaker) {
     this.connectionMaker = connectionMaker;
   }
 
