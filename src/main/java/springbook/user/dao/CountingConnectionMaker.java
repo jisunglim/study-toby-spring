@@ -7,9 +7,10 @@ import java.sql.SQLException;
  * Here your documentation.
  *
  * @author  Jisung Lim ( iejisung@gmail.com )
- * @version 1.8 Configuration Setting Using XML
+ * @version 1.8 (Deprecated)
  * @since   1.7 Dependency Injection
  */
+@Deprecated
 public class CountingConnectionMaker implements ConnectionMaker {
   int counter = 0;
   private ConnectionMaker realConnectionMaker;

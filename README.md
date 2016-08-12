@@ -79,3 +79,75 @@
        or ```<property name="propertyName" ref="refOfDependencyObject" />```
        
 
+##### 3. Applying DataSource Interface
+
+* We will now use ```DataSource``` Interface.
+    ```java
+    package javax.sql;
+    
+    public interface DataSource  extends CommonDataSource, Wrapper {
+      Connection getConnection() throws SQLException;
+      // ...
+    }
+    ```
+
+* Refactoring ```UserDao```
+    ```java
+    public class UserDao {
+    
+      private DataSource dataSource;
+
+      public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+      }
+      
+      public void add(User user) throws ClassNotFoundException, SQLException {
+        Connection conn = dataSource.getConnection();
+        // ...
+      }
+    }
+    ```
+    
+* Refactoring ```DaoFactory```
+    ```java
+    @Configuration
+    public class DaoFactory {
+
+      @Bean
+      public DataSource dataSource() {
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+    
+        dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
+        dataSource.setUrl("jdbc:mysql://localhost:3306/springbook");
+        dataSource.setUsername("springbook");
+        dataSource.setPassword("springbook");
+        
+        return dataSource;
+      }
+
+      @Bean
+      public UserDao userDao() {
+        UserDao userDao = new UserDao();
+        userDao.setDataSource(dataSource());
+        return userDao;
+      }
+    }
+    ```
+
+* Refactoring ```ApplicationContext.xml```
+    ```xml
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+      <property name="driverClass" ref="com.mysql.jdbc.Driver"/>
+      <property name="url" ref="jdbc:mysql://localhost:3306/springbook"/>
+      <property name="username" ref="springbook"/>
+      <property name="password" ref="springbook"/>
+    </bean>
+    ```
+    
+
+
+
+
+
+
+

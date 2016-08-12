@@ -5,32 +5,37 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import springbook.user.domain.User;
 
 /**
  * Here your documentation.
  *
  * @author  Jisung Lim ( iejisung@gmail.com )
- * @version 1.7 Dependency Injection
+ * @version 1.8 Configuration Setting Using XML (3) Applying {@code DataSource} Interface
  * @since   1.1 Distracting DAO
  */
 public class UserDao {
 
-  private ConnectionMaker connectionMaker;
+  private DataSource dataSource;
+  //private ConnectionMaker connectionMaker;
 
 //  public UserDao(ConnectionMaker connectionMaker) {
 //    this.connectionMaker = connectionMaker;
 //  }
 
-  public void setConnectionMaker(ConnectionMaker connectionMaker) {
-    this.connectionMaker = connectionMaker;
+  public void setDataSource(DataSource dataSource) {
+    this.dataSource = dataSource;
+    // this.connectionMaker = connectionMaker;
   }
 
   public void add(User user) throws ClassNotFoundException, SQLException {
 
-    Connection con = connectionMaker.makeConnection();
+    Connection conn = dataSource.getConnection();
+    // Coonection conn = connectionMaker.makeConnection();
 
-    PreparedStatement pstmt = con.prepareStatement(
+    PreparedStatement pstmt = conn.prepareStatement(
         "INSERT INTO users(id, name, password) values(?, ?, ?)"
     );
 
@@ -41,14 +46,15 @@ public class UserDao {
     pstmt.executeUpdate();
 
     pstmt.close();
-    con.close();
+    conn.close();
   }
 
   public User get(String id) throws ClassNotFoundException, SQLException {
 
-    Connection con = connectionMaker.makeConnection();
+    Connection conn = dataSource.getConnection();
+    // Coonection conn = connectionMaker.makeConnection();
 
-    PreparedStatement pstmt = con.prepareStatement(
+    PreparedStatement pstmt = conn.prepareStatement(
         "SELECT * FROM users WHERE id = ?"
     );
 
@@ -66,7 +72,7 @@ public class UserDao {
 
     rs.close();
     pstmt.close();
-    con.close();
+    conn.close();
 
     return user;
   }
