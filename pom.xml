@@ -69,6 +69,13 @@
       <version>${org.springframework-version}</version>
     </dependency>
 
+    <!-- ch 1.8 spring jdbc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
     <!-- MySQL JDBC Driver -->
     <dependency>
       <groupId>mysql</groupId>

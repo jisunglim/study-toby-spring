@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * Here your documentation.
  *
  * @author  Jisung Lim ( iejisung@gmail.com )
- * @version 1.7 Dependency Injection
+ * @version 1.8 Configuration Setting Using XML
  * @since   1.4 Inversion of Control
  */
 @Configuration
@@ -18,12 +18,16 @@ public class DaoFactory {
     UserDao userDao = new UserDao();
     userDao.setConnectionMaker(connectionMaker());
     return userDao;
-    //return new UserDao(connectionMaker());
+    // return new UserDao(connectionMaker());
   }
 
   @Bean
   public ConnectionMaker connectionMaker() {
-    return new CountingConnectionMaker(realConnectionMaker());
+    CountingConnectionMaker countingConnectionMaker =
+        new CountingConnectionMaker();
+    countingConnectionMaker.setRealConnectionMaker(realConnectionMaker());
+    return countingConnectionMaker;
+    // return new CountingConnectionMaker(realConnectionMaker());
   }
 
   @Bean
