@@ -8,9 +8,10 @@ import java.sql.SQLException;
  * Here your documentation.
  *
  * @author  Jisung Lim ( iejisung@gmail.com )
- * @version 1.3 Extension of DAO
+ * @version 1.8 (Deprecated)
  * @since   1.3 Extension of DAO
  */
+@Deprecated
 public class DConnectionMaker implements ConnectionMaker {
 
   public Connection makeConnection() throws SQLException {
