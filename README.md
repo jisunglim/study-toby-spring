@@ -1,11 +1,25 @@
-# toby-spring-practice
-### This project is for practicing SPRING framework.
+# study-toby-spring
 
-## Created
-### _BY_ [JisungLim](https://github.com/jisunglim)
-### _SINCE_ August 9, 2016
+#### This project is for practicing SPRING framework. It is started from August 9th, 2016.
 
-## Chapter 1.7 Configuration Setting Using XML
+Created by
+----------
+### [Jay Lim](https://github.com/jisunglim)
+
+#### B.S. Candidate in industrial engineering
+#### Yonsei University, South Korea
+
+Reference
+---------
+### [토비의 스프링 3.1](http://www.yes24.com/24/UsedShop/Goods/7516911)
+
+Version
+-------
+### v1.0-SNAPSHOT (since 2016.08.09)
+
+
+Chapter 1.7 Configuration Setting Using XML
+-------------------------------------------
 
 ##### 1. Setting in XML
 
