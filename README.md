@@ -64,10 +64,10 @@
 
     |                    | Java Code               | XML Code                   |
     |--------------------|-------------------------|----------------------------|
-    | Bean configuration | @Configuration          | <beans>                    |
+    | Bean configuration | @Configuration          | &lt;beans&gt;              |
     | Name of bean       | @Bean methodName()      | <bean id="methodName"      |
     | Class of bean      | return new BeanClass(); | class="a.b.c...BeanClass"> |
-    | Dependency Object  | beanClass.setPropertyName(refOfDependencyObject());|<property name="propertyName" ref="refOfDependencyObject" />|
+    | Dependency Object  | beanClass.setPropertyName(refOfDependencyObject()); | &lt;property name="propertyName" ref="refOfDependencyObject" /&gt; |
 
 * More generally, a bean object has at most three DI information.
     1. **Name** : method name
