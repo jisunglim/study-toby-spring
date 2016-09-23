@@ -18,7 +18,7 @@ Version
 ### v1.0-SNAPSHOT (since 2016.08.09)
 
 
-Chapter 1.7 Configuration Setting Using XML
+Chapter 1.8 Configuration Setting Using XML
 -------------------------------------------
 
 ##### 1. Setting in XML

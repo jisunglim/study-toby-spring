@@ -13,23 +13,37 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-  <!--
-  <bean id="realConnectionMaker" class="springbook.user.dao.DConnectionMaker" />
+    <!--
+    <bean id="realConnectionMaker" class="springbook.user.dao.DConnectionMaker" />
 
-  <bean id="connectionMaker" class="springbook.user.dao.CountingConnectionMaker">
-    <property name="realConnectionMaker" ref="realConnectionMaker" />
-  </bean>
-  -->
+    <bean id="connectionMaker" class="springbook.user.dao.CountingConnectionMaker">
+      <property name="realConnectionMaker" ref="realConnectionMaker" />
+    </bean>
+    -->
 
-  <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-    <property name="driverClass" ref="com.mysql.jdbc.Driver"/>
-    <property name="url" ref="jdbc:mysql://localhost:3306/springbook"/>
-    <property name="username" ref="springbook"/>
-    <property name="password" ref="springbook"/>
-  </bean>
+    <!--
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+      <property name="driverClass" ref="com.mysql.jdbc.Driver"/>
+      <property name="url" ref="jdbc:mysql://localhost:3306/springbook"/>
+      <property name="username" ref="springbook"/>
+      <property name="password" ref="springbook"/>
+    </bean>
 
-  <bean id="userDao" class="springbook.user.dao.UserDao">
-    <property name="connectionMaker" ref="connectionMaker" />
-  </bean>
+    <bean id="userDao" class="springbook.user.dao.UserDao">
+      <property name="connectionMaker" ref="connectionMaker" />
+    </bean>
+    -->
+
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/springbook"/>
+        <property name="username" value="springbook"/>
+        <property name="password" value="springbook"/>
+    </bean>
+
+    <bean id="userDao" class="springbook.user.dao.UserDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 </beans>
